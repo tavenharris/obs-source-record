@@ -404,7 +404,7 @@ static void start_replay_output(struct source_record_filter_context *filter,
 	filter->replay_buffer_duration =
 		obs_data_get_int(settings, "replay_duration");
 	obs_data_set_int(s, "max_time_sec", filter->replay_buffer_duration);
-	obs_data_set_int(s, "max_size_mb", 10000);
+	obs_data_set_int(s, "max_size_mb", 60000);
 	if (!filter->replayOutput) {
 		obs_data_t *hotkeys =
 			obs_data_get_obj(settings, "replay_hotkeys");
@@ -1113,7 +1113,7 @@ static obs_properties_t *source_record_filter_properties(void *data)
 	obs_properties_t *replay = obs_properties_create();
 
 	p = obs_properties_add_int(replay, "replay_duration",
-				   obs_module_text("Duration"), 1, 1000, 1);
+				   obs_module_text("Duration"), 1, 6000, 1);
 	obs_property_int_set_suffix(p, "s");
 
 	obs_properties_add_group(props, "replay_buffer",
